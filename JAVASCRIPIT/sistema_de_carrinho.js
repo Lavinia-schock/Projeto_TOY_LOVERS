@@ -1,10 +1,11 @@
-const CHAVE_CARRINHO = "toysLoversCarrinho";
 
-let carrinho = JSON.parse(localStorage.getItem("toysLoversCarrinho")) || [];
-
-document.addEventListener("DOMContentLoaded", async function() {
-
+document.addEventListener("DOMContentLoaded", async function () {
     const sistema = window.ToysLoversCarrinho;
+
+    if (!sistema) {
+        console.error("Erro: o objeto ToysLoversCarrinho não foi encontrado. Verifique se carrinho.js foi carregado antes deste arquivo.");
+        return;
+    }
 
     await sistema.pronto;
 
@@ -22,34 +23,51 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     const modalElemento = document.getElementById("checkoutModal");
 
-    const modalCompra = modalElemento
+    const modalCompra = modalElemento && window.bootstrap
         ? new bootstrap.Modal(modalElemento)
         : null;
+
+    if (!areaProdutos || !carrinhoVazio || !resumo || !botaoLimpar) {
+        console.error("Erro: um ou mais elementos principais do carrinho não foram encontrados no HTML.");
+        return;
+    }
 
     function atualizarResumo() {
         const produtos = sistema.obterProdutos();
 
         const quantidade = produtos.reduce((total, produto) => {
-            return total + produto.quantidade;
+            return total + Number(produto.quantidade || 0);
         }, 0);
 
         const total = sistema.calcularTotal();
 
-        totalItens.textContent =
-            `${quantidade} ${quantidade === 1 ? "produto" : "produtos"}`;
+        if (totalItens) {
+            totalItens.textContent =
+                `${quantidade} ${quantidade === 1 ? "produto" : "produtos"}`;
+        }
 
-        subtotal.textContent = sistema.formatarPreco(total);
-        totalPreco.textContent = sistema.formatarPreco(total);
+        if (subtotal) {
+            subtotal.textContent = sistema.formatarPreco(total);
+        }
+
+        if (totalPreco) {
+            totalPreco.textContent = sistema.formatarPreco(total);
+        }
     }
 
     function mostrarCarrinho() {
         const produtos = sistema.obterProdutos();
 
-        if (produtos.length === 0) {
+        if (!produtos || produtos.length === 0) {
             carrinhoVazio.style.display = "flex";
             areaProdutos.style.display = "none";
             resumo.style.display = "none";
             botaoLimpar.style.display = "none";
+
+            if (totalItens) totalItens.textContent = "0 produtos";
+            if (subtotal) subtotal.textContent = sistema.formatarPreco(0);
+            if (totalPreco) totalPreco.textContent = sistema.formatarPreco(0);
+
             return;
         }
 
@@ -61,7 +79,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         areaProdutos.innerHTML = produtos.map(produto => `
             <article class="cart-product">
 
-                <img src="${produto.imagemCompleta}" alt="${produto.nome}">
+                <img
+                    src="${produto.imagemCompleta || produto.imagem || ""}"
+                    alt="${produto.nome}"
+                >
 
                 <div class="cart-product-info">
                     <h3>${produto.nome}</h3>
@@ -76,25 +97,31 @@ document.addEventListener("DOMContentLoaded", async function() {
                 </div>
 
                 <div class="quantity-control">
-
-                    <button type="button" class="quantity-btn"
-                        data-id="${produto.id}" data-action="diminuir"
-                        aria-label="Diminuir quantidade">
-                        -
-                    </button>
+                    <button
+                        type="button"
+                        class="quantity-btn"
+                        data-id="${produto.id}"
+                        data-action="diminuir"
+                        aria-label="Diminuir quantidade"
+                    >-</button>
 
                     <span>${produto.quantidade}</span>
 
-                    <button type="button" class="quantity-btn"
-                        data-id="${produto.id}" data-action="aumentar"
-                        aria-label="Aumentar quantidade">
-                        +
-                    </button>
-
+                    <button
+                        type="button"
+                        class="quantity-btn"
+                        data-id="${produto.id}"
+                        data-action="aumentar"
+                        aria-label="Aumentar quantidade"
+                    >+</button>
                 </div>
 
-                <button type="button" class="remove-product"
-                    data-id="${produto.id}" aria-label="Remover produto">
+                <button
+                    type="button"
+                    class="remove-product"
+                    data-id="${produto.id}"
+                    aria-label="Remover produto"
+                >
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
 
@@ -104,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         atualizarResumo();
     }
 
-    areaProdutos.addEventListener("click", function(event) {
+    areaProdutos.addEventListener("click", function (event) {
         const botao = event.target.closest("button");
 
         if (!botao) return;
@@ -128,49 +155,66 @@ document.addEventListener("DOMContentLoaded", async function() {
         mostrarCarrinho();
     });
 
-    botaoLimpar.addEventListener("click", function() {
+    botaoLimpar.addEventListener("click", function () {
         if (confirm("Deseja realmente limpar seu carrinho?")) {
             sistema.limpar();
             mostrarCarrinho();
         }
     });
 
-    botaoFinalizar.addEventListener("click", function() {
-        if (sistema.obterProdutos().length === 0) return;
+    if (botaoFinalizar) {
+        botaoFinalizar.addEventListener("click", function () {
+            if (sistema.obterProdutos().length === 0) return;
 
-        const pagamento = document.querySelector(
-            'input[name="forma-pagamento"]:checked'
-        );
+            const pagamento = document.querySelector(
+                'input[name="forma-pagamento"]:checked'
+            );
 
-        if (!pagamento) {
-            alert("Selecione uma forma de pagamento.");
-            return;
-        }
+            if (!pagamento) {
+                alert("Selecione uma forma de pagamento.");
+                return;
+            }
 
-        document.getElementById("modal-total").textContent =
-            sistema.formatarPreco(sistema.calcularTotal());
+            const modalTotal = document.getElementById("modal-total");
+            const modalPagamento = document.getElementById("modal-pagamento");
 
-        document.getElementById("modal-pagamento").textContent =
-            pagamento.value;
+            if (modalTotal) {
+                modalTotal.textContent =
+                    sistema.formatarPreco(sistema.calcularTotal());
+            }
 
-        modalCompra.show();
-    });
+            if (modalPagamento) {
+                modalPagamento.textContent = pagamento.value;
+            }
 
-    botaoConfirmar.addEventListener("click", function() {
-        alert(
-            "Demonstração concluída! Nenhum pagamento foi realizado."
-        );
+            if (modalCompra) {
+                modalCompra.show();
+            } else {
+                alert("Não foi possível abrir a confirmação. Verifique o Bootstrap e o elemento checkoutModal no HTML.");
+            }
+        });
+    }
 
-        sistema.limpar();
-        mostrarCarrinho();
+    if (botaoConfirmar) {
+        botaoConfirmar.addEventListener("click", function () {
+            alert("Demonstração concluída! Nenhum pagamento foi realizado.");
 
-        modalCompra.hide();
-    });
+            sistema.limpar();
+            mostrarCarrinho();
+
+            if (modalCompra) {
+                modalCompra.hide();
+            }
+        });
+    }
 
     window.addEventListener("carrinhoAtualizado", mostrarCarrinho);
 
-    window.addEventListener("storage", mostrarCarrinho);
+    window.addEventListener("storage", function (event) {
+        if (event.key === "toysLoversCarrinho" || event.key === null) {
+            mostrarCarrinho();
+        }
+    });
 
     mostrarCarrinho();
-
 });
