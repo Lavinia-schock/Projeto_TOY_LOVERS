@@ -106,11 +106,9 @@
       <div class="sidebar-banner">Diversão para todas as idades!</div>
     </aside>
 
-    <div class="conteudo-principal">,
-
+    <div class="conteudo-principal">
 
       <section class="resultados-busca" id="resultadosBusca" hidden>
-
         <div class="section-title">
           <div>
             <h2 id="tituloResultados">Resultado da pesquisa</h2>
@@ -123,17 +121,18 @@
         </div>
 
         <div class="lista-produtos" id="listaResultados"></div>
-
       </section>
 
       <section class="games-section" id="jogos">
         <div class="game-callout">
           <h2>🎮 Jogue Agora!</h2>
           <p>Acesse nossa área de jogos e desafie seus amigos!</p>
-          <a href="HTML/area_das_criancas.html" class="action-button">Ir para os Jogos <i
-              class="fa-solid fa-arrow-right"></i></a>
+          <a href="HTML/area_das_criancas.html" class="action-button">
+            Ir para os Jogos <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
-        <img src="IMG/Brinquedos de Tabuleiro.png" class="game-ilustration" alt="imagem jogos">
+
+        <img src="IMG/Brinquedos de Tabuleiro.png" class="game-ilustration" alt="Imagem de jogos de tabuleiro">
       </section>
 
       <section class="section-block" id="catalogo">
@@ -141,32 +140,48 @@
           <div>
             <h2><i class="fa-solid fa-puzzle-piece"></i> Seção</h2>
             <p>Os brinquedos mais amados pelas nossas crianças!</p>
-          </div><a href="HTML/destaques.html" class="btn-outline-custom">Ver todos →</a>
+          </div>
+
+          <a href="HTML/destaques.html" class="btn-outline-custom">
+            Ver todos →
+          </a>
         </div>
+
         <div class="products-grid">
           <article class="product-card" data-categoria="Jogos de Tabuleiro">
-            <div class="product-placeholder"><i class="fa-solid fa-dice"></i></div>
+            <div class="product-placeholder">
+              <i class="fa-solid fa-dice"></i>
+            </div>
             <div class="card-info">
               <h3>Jogos de Tabuleiro</h3>
               <p>Reúna a família!</p>
             </div>
           </article>
+
           <article class="product-card" data-categoria="Quebra-Cabeças">
-            <div class="product-placeholder"><i class="fa-solid fa-puzzle-piece"></i></div>
+            <div class="product-placeholder">
+              <i class="fa-solid fa-puzzle-piece"></i>
+            </div>
             <div class="card-info">
               <h3>Quebra-Cabeças</h3>
               <p>Mais concentração!</p>
             </div>
           </article>
+
           <article class="product-card" data-categoria="Carrinhos">
-            <div class="product-placeholder"><i class="fa-solid fa-car"></i></div>
+            <div class="product-placeholder">
+              <i class="fa-solid fa-car"></i>
+            </div>
             <div class="card-info">
               <h3>Carrinhos</h3>
               <p>Aventura na corrida!</p>
             </div>
           </article>
+
           <article class="product-card" data-categoria="Bonecas">
-            <div class="product-placeholder"><i class="fa-solid fa-heart"></i></div>
+            <div class="product-placeholder">
+              <i class="fa-solid fa-heart"></i>
+            </div>
             <div class="card-info">
               <h3>Bonecas</h3>
               <p>Amor em forma de brinquedo!</p>
@@ -180,73 +195,56 @@
           <div>
             <h2>♛ Destaques</h2>
             <p>Os queridinhos da nossa loja! Mais vendidos</p>
-          </div><a href="HTML/area_das_criancas.html" class="ver-todos">Voltar aos jogos ↑</a>
+          </div>
+
+          <a href="HTML/area_das_criancas.html" class="ver-todos">
+            Voltar aos jogos ↑
+          </a>
         </div>
+
         <div class="categoria">
           <div class="cabecalho-categoria">
             <h3>🎲 Jogos de Tabuleiro</h3>
-            <p>Reúna a família e divirta-se com os clássicos!</p><span class="preco-inicial">A partir de R$ 24,90</span>
+            <p>Reúna a família e divirta-se com os clássicos!</p>
+            <span class="preco-inicial">A partir de R$ 24,90</span>
           </div>
-          <div class="lista-produtos" id="produtos-jogos">
-            <!-- Json vai carregar os produtos -->
 
-            </article>
-          </div>
+          <div class="lista-produtos" id="produtos-jogos"></div>
         </div>
 
         <div class="categoria">
-
           <div class="cabecalho-categoria">
             <h3>🧩 Quebra-Cabeças</h3>
             <p>Mais concentração, mais diversão!</p>
-            <span class="preco-inicial">
-              A partir de R$ 22,90
-            </span>
+            <span class="preco-inicial">A partir de R$ 22,90</span>
           </div>
 
-          <!-- Produtos carregados pelo JSON -->
-          <div class="lista-produtos" id="produtos-quebra-cabecas">
-
-          </div>
-
+          <div class="lista-produtos" id="produtos-quebra-cabecas"></div>
         </div>
+      </section>
 
-        <!-- Area dos produtos ao ser clicado -->
-        <div class="modal-produto" id="modalProduto">
+      <div class="modal-produto" id="modalProduto">
+        <div class="modal-conteudo">
+          <button id="fecharModal" class="fechar-modal">&times;</button>
 
-          <div class="modal-conteudo">
+          <img id="modalImagem" src="" alt="">
 
-            <button id="fecharModal" class="fechar-modal">
-              &times;
+          <div class="informacoes-produto">
+            <h2 id="modalNome"></h2>
+            <p id="modalCategoria"></p>
+            <p id="modalDescricao"></p>
+            <p id="modalIdade"></p>
+            <p id="modalAvaliacao"></p>
+            <p id="modalVendidos"></p>
+            <h3 id="modalPreco"></h3>
+
+            <button id="modalAdicionarCarrinho">
+              Adicionar ao carrinho
             </button>
-
-            <img id="modalImagem" src="" alt="">
-
-            <div class="informacoes-produto">
-
-              <h2 id="modalNome"></h2>
-
-              <p id="modalCategoria"></p>
-
-              <p id="modalDescricao"></p>
-
-              <p id="modalIdade"></p>
-
-              <p id="modalAvaliacao"></p>
-
-              <p id="modalVendidos"></p>
-
-              <h3 id="modalPreco"></h3>
-
-              <button id="modalAdicionarCarrinho">
-                Adicionar ao carrinho
-              </button>
-
-            </div>
-
           </div>
-
         </div>
+      </div>
+
     </div>
 
   </main>
