@@ -1,0 +1,2 @@
+document.getElementById('newsletter-form').addEventListener('submit', function (e) { e.preventDefault(); 
+document.getElementById('newsletter-feedback').textContent = 'E-mail recebido para demonstração!'; this.reset(); });

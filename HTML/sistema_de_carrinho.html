@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meu Carrinho | Toys Lovers</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="icon" href="../IMG/MC-LOVERS-LOGO-ICONE.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/sistema_de_carrinho.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <nav class="topbar container-wide" aria-label="Navegacão principal">
+            <a class="logo" href="../index.html">Toys Lovers</a>
+            <form class="search-box" action="https://www.google.com/search" method="get" target="_blank" role="search">
+                <label class="visually-hidden" for="busca">Pesquisar</label>
+                <input id="busca" type="search" name="q" placeholder="Pesquisar brinquedos..." required>
+                <!-- Substitui o domínio quando o site estiver publicado. -->
+                <!-- <input type="hidden" name="as_sitesearch" value="seusite.com.br"> -->
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+            </form>
+            <ul class="nav-links">
+                <li><a href="../index.html"><i class="fa-solid fa-house"></i> Início &rsaquo;</a></li>
+                <li><a href="catalogo_produto.html"><i class="fa-solid fa-book-open"></i> Catálogo</a></li>
+                <li><a href="area_das_criancas.html"><i class="fa-solid fa-gamepad"></i> Comunidade Kids</a></li>
+                <li><a href="sobre_nos.html"><i class="fa-solid fa-store"></i> Loja</a></li>
+            </ul>
+
+            <ul class="nav-link">
+                <li><a href="cadastro.html" aria-label="Cadastro"><i class="fa-regular fa-user"></i></a></li>
+                <li><a href="sistema_de_carrinho.html" aria-label="Carrinho"><i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container-cart">
+
+        <!-- TÍTULO -->
+        <section class="cart-heading">
+
+            <a href="catalogo_produto.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
+            <div>
+                <h1>Meu Carrinho <i class="fa-solid fa-cart-shopping"></i></h1>
+
+                <p>Confira os produtos que você selecionou.</p>
+            </div>
+
+        </section>
+
+
+        <!-- ÁREA DO CARRINHO -->
+        <section class="cart-layout">
+
+            <!-- PRODUTOS E ESTADO VAZIO -->
+            <div class="cart-content">
+
+                <!-- CARRINHO VAZIO -->
+                <div id="empty-cart" class="empty-cart">
+
+                    <img src="imagens/carrinho-vazio.png" alt="Ursinho e carrinho de compras">
+
+                    <h2>Seu carrinho está vazio!</h2>
+
+                    <p>
+                        Parece que você ainda não adicionou
+                        nenhum produto por aqui.
+                    </p>
+
+                    <a href="catalogo_produto.html" class="continue-button">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        Continuar comprando
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- LISTA DE PRODUTOS -->
+                <div id="cart-items" class="cart-items">
+
+                    <!-- O JavaScript criará os produtos aqui -->
+
+                </div>
+
+
+                <!-- LIMPAR CARRINHO -->
+                <button id="clear-cart" class="clear-cart">
+                    <i class="fa-regular fa-trash-can"></i>
+                    Limpar carrinho
+                </button>
+
+            </div>
+
+
+            <!-- RESUMO DO PEDIDO -->
+            <aside id="order-summary" class="order-summary">
+
+                <h2>Resumo do pedido</h2>
+
+                <div class="summary-line">
+                    <span id="total-items">0 produtos</span>
+                    <span id="subtotal">R$ 0,00</span>
+                </div>
+
+                <hr>
+
+                <div class="total-line">
+                    <strong>Total</strong>
+                    <strong id="total-price">R$ 0,00</strong>
+                </div>
+
+
+                <div class="payment-options">
+
+                    <h3>Forma de pagamento</h3>
+
+                    <label class="payment-option">
+                        <input type="radio" name="forma-pagamento" value="Pix">
+                        <i class="fa-brands fa-pix"></i>
+                        Pix
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="forma-pagamento" value="Cartão de crédito">
+                        <i class="fa-regular fa-credit-card"></i>
+                        Cartão de crédito
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="forma-pagamento" value="Boleto bancário">
+                        <i class="fa-solid fa-barcode"></i>
+                        Boleto bancário
+                    </label>
+
+                </div>
+
+
+                <button id="checkout-button" class="checkout-button">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Finalizar compra
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <a href="categorias.html" class="continue-outline">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Continuar comprando
+                </a>
+
+            </aside>
+
+        </section>
+
+
+        <!-- BENEFÍCIOS -->
+        <section class="benefits">
+
+            <div class="benefit-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <strong>Entrega segura</strong>
+                    <p>Para todo o Brasil</p>
+                </div>
+            </div>
+
+            <div class="benefit-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <strong>Compra protegida</strong>
+                    <p>Seus dados em segurança</p>
+                </div>
+            </div>
+
+            <div class="benefit-item">
+                <i class="fa-regular fa-credit-card"></i>
+                <div>
+                    <strong>Diversas formas de pagamento</strong>
+                    <p>Cartão, Pix e boleto</p>
+                </div>
+            </div>
+
+            <div class="benefit-item">
+                <i class="fa-regular fa-face-smile"></i>
+                <div>
+                    <strong>Suporte especial</strong>
+                    <p>Estamos aqui para ajudar</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL DE CONFIRMAÇÃO -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content checkout-modal">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalLabel">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Pedido preparado!
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <!-- O pagamento será uma demonstração. 
+                     Para realizar cobranças reais, será necessário integrar um provedor de pagamento; 
+                     não se pode colocar dados reais de cartão nesse formulário de teste. -->
+
+                    <p>
+                        Seu carrinho está pronto para a próxima etapa.
+                    </p>
+
+                    <p>
+                        Total do pedido:
+                        <strong id="modal-total">R$ 0,00</strong>
+                    </p>
+
+                    <p>
+                        Forma de pagamento:
+                        <strong id="modal-pagamento">Não selecionada</strong>
+                    </p>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Voltar
+                    </button>
+
+                    <button type="button" id="confirm-order" class="btn btn-danger">
+                        Confirmar demonstração
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RODAPÉ -->
+    <footer class="footer" id="rodape">
+        <div class="footer-container container-wide">
+            <div class="footer-logo">
+                <h2>Toys Lovers</h2>
+                <p>Brincar é muito melhor juntos! ♥</p>
+            </div>
+            <div class="footer-links"><a href="#inicio">Sobre Nós</a><a href="#rodape">Política de Privacidade</a><a
+                    href="#rodape">Termos de Uso</a><a href="#rodape">Fale Conosco</a></div>
+            <div class="footer-social"><a href="https://www.youtube.com/" aria-label="YouTube"><i
+                        class="fa-brands fa-youtube"></i></a><a href="https://www.instagram.com/"
+                    aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://www.tiktok.com/"
+                    aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></div>
+            <div class="footer-newsletter">
+                <p>Receba novidades e ofertas especiais!</p>
+                <form id="newsletter-form" class="newsletter-input"><label class="visually-hidden"
+                        for="email-newsletter">Seu
+                        e-mail</label><input id="email-newsletter" type="email" placeholder="Seu e-mail"
+                        required><button type="submit" aria-label="Cadastrar e-mail">→</button></form>
+                <p id="newsletter-feedback" class="newsletter-feedback" aria-live="polite"></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript da loja -->
+    <script src="../JAVASCRIPIT/sistema_de_carrinho.js"></script>
+    <script src="../carrinho.js" data-catalogo="../JSON/catalogo_produto.json"></script>
+
+</body>
+
+</html>

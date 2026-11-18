@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catalogo dos produtos | Toys Lovers</title>
+
+    <link rel="stylesheet" href="../CSS/catalogo_produto.css">
+    <link rel="icon" href="../IMG/MC-LOVERS-LOGO-ICONE.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="site-header" id="inicio">
+
+
+        <nav class="topbar container-wide" aria-label="Navegacão principal">
+            <a class="logo" href="../index.html">Toys Lovers</a>
+            <form class="search-box" id="formBusca" action="catalogo_produto.html" method="GET" role="search">
+                <label class="visually-hidden" for="busca">Pesquisar</label>
+                <input id="busca" type="search" placeholder="Pesquisar brinquedos">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+            </form>
+            <ul class="nav-links">
+                <li><a href="../index.html"><i class="fa-solid fa-house"></i> Início </a></li>
+                <li><a href="catalogo_produto.html"><i class="fa-solid fa-book-open"></i> Catálogo </a></li>
+                <li><a href="area_das_criancas.html"><i class="fa-solid fa-gamepad"></i> Comunidade Kids</a>
+                </li>
+                <li><a href="sobre_nos.html"><i class="fa-solid fa-store"></i> Loja</a></li>
+            </ul>
+
+            <ul class="nav-link">
+                <li><a href="cadastro.html" aria-label="Cadastro"><i class="fa-regular fa-user"></i></a></li>
+                <li><a href="sistema_de_carrinho.html" aria-label="Carrinho"><i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
+            </ul>
+        </nav>
+
+        <!-- MODAL DE INFORMAÇÕES DO PRODUTO -->
+        <div class="modal-produto" id="modalProduto" aria-hidden="true">
+
+            <div class="modal-conteudo">
+
+                <button class="fechar-modal" id="fecharModal" aria-label="Fechar">
+                    &times;
+                </button>
+
+                <div class="modal-imagem">
+                    <img id="modalImagem" src="" alt="">
+                </div>
+
+                <div class="modal-informacoes">
+
+                    <span class="modal-categoria" id="modalCategoria"></span>
+
+                    <h2 id="modalNome"></h2>
+
+                    <p id="modalDescricao"></p>
+
+                    <p class="modal-idade" id="modalIdade"></p>
+
+                    <div class="modal-avaliacao">
+                        <span id="modalAvaliacao"></span>
+                        <small id="modalVendidos"></small>
+                    </div>
+
+                    <div class="modal-preco" id="modalPreco"></div>
+
+                    <button class="add-cart" id="modalAdicionarCarrinho" data-id="">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Adicionar ao carrinho
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+
+        <!-- CAMINHO DA PÁGINA -->
+        <div class="breadcrumb">
+            <a href="../index.html">Início</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Catalogo</span>
+        </div>
+
+
+        <!-- TÍTULO -->
+        <section class="page-title">
+
+            <div class="title-icon">
+                <i class="fa-solid fa-cube"></i>
+            </div>
+
+            <div>
+                <h1>Categorias</h1>
+                <p>Encontre os brinquedos perfeitos para cada momento!</p>
+            </div>
+
+            <div class="title-decoration">
+                <i class="fa-solid fa-gamepad"></i>
+            </div>
+
+        </section>
+
+
+        <!-- ÁREA DE FILTROS E PRODUTOS -->
+        <section class="catalog">
+
+            <!-- FILTROS LATERAIS -->
+            <aside class="filters">
+
+                <div class="filter-section">
+
+                    <h3>Preço</h3>
+
+                    <div class="price-slider">
+                        <input type="range" id="filtroPreco" min="19.99" max="2299.99" value="2299.99" step="0.01">
+                    </div>
+
+                    <p class="price-value">
+                        R$ 19,99 - R$ 2.299,99
+                    </p>
+
+                </div>
+
+
+                <div class="filter-section">
+
+                    <h3>Ordenar por</h3>
+
+                    <label>
+                        <input type="radio" name="ordenar" value="nome-az">
+                        Nome: A a Z
+                    </label>
+
+                    <label>
+                        <input type="radio" name="ordenar" value="nome-za">
+                        Nome: Z a A
+                    </label>
+
+                    <label>
+                        <input type="radio" name="ordenar" value="recente">
+                        Mais recente
+                    </label>
+
+                    <label>
+                        <input type="radio" name="ordenar" value="menor-preco">
+                        Preço: Menor para o maior
+                    </label>
+
+                    <label>
+                        <input type="radio" name="ordenar" value="maior-preco">
+                        Preço: Maior para o menor
+                    </label>
+
+                    <label>
+                        <input type="radio" name="ordenar" value="desconto">
+                        Desconto
+                    </label>
+
+                    <label>
+                        <input type="radio" name="ordenar" value="vendidos">
+                        Mais vendidos
+                    </label>
+
+                </div>
+
+
+                <div class="filter-section">
+
+                    <h3>Idade</h3>
+
+                    <label>
+                        <input type="checkbox" data-idade="3">
+                        A partir de 3 anos (118)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" data-idade="4">
+                        A partir de 4 anos (71)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" data-idade="5">
+                        A partir de 5 anos (64)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" data-idade="6">
+                        A partir de 6 anos (44)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" data-idade="7">
+                        A partir de 7 anos (24)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" data-idade="8">
+                        A partir de 8 anos (20)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" data-idade="9">
+                        A partir de 9 anos (13)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" data-idade="10">
+                        A partir de 10 anos (12)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" data-idade="11">
+                        A partir de 11 anos (7)
+                    </label>
+
+
+                    <a href="#" class="show-more">– Ver Menos</a>
+
+                </div>
+
+            </aside>
+
+
+            <!-- GRADE DE PRODUTOS -->
+            <div class="products" id="products">
+
+            </div>
+
+
+            <!-- PAGINAÇÃO -->
+            <div class="pagination">
+
+                <a href="#" class="current">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#" aria-label="Próxima página">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="rodape">
+        <div class="footer-container container-wide">
+            <div class="footer-logo">
+                <h2>Toys Lovers</h2>
+                <p>Brincar é muito melhor juntos! ♥</p>
+            </div>
+            <div class="footer-links"><a href="#inicio">Sobre Nós</a><a href="#rodape">Política de Privacidade</a><a
+                    href="#rodape">Termos de Uso</a><a href="#rodape">Fale Conosco</a></div>
+            <div class="footer-social"><a href="https://www.youtube.com/" aria-label="YouTube"><i
+                        class="fa-brands fa-youtube"></i></a><a href="https://www.instagram.com/"
+                    aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://www.tiktok.com/"
+                    aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></div>
+            <div class="footer-newsletter">
+                <p>Receba novidades e ofertas especiais!</p>
+                <form id="newsletter-form" class="newsletter-input"><label class="visually-hidden"
+                        for="email-newsletter">Seu
+                        e-mail</label><input id="email-newsletter" type="email" placeholder="Seu e-mail"
+                        required><button type="submit" aria-label="Cadastrar e-mail">→</button></form>
+                <p id="newsletter-feedback" class="newsletter-feedback" aria-live="polite"></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JAVASCRIPIT/catalogo_produto.js"></script>
+    <script src="../carrinho.js" data-catalogo="../JSON/catalogo_produto.json"></script>
+</body>
+
+</html>

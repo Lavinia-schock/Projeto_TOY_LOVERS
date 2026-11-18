@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | Toys Lovers</title>
+    <link rel="stylesheet" href="../CSS/cadastro.css">
+    <link rel="icon" href="../IMG/MC-LOVERS-LOGO-ICONE.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="site-header" id="inicio">
+        <nav class="topbar container-wide" aria-label="Navegação principal">
+            <a class="logo" href="../index.html">Toys Lovers</a>
+            <form class="search-box" action="https://www.google.com/search" method="get" target="_blank" role="search">
+                <label class="visually-hidden" for="busca">Pesquisar</label>
+                <input id="busca" type="search" name="q" placeholder="Pesquisar brinquedos..." required>
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+            </form>
+            <ul class="nav-links">
+                <li><a href="../index.html" target="_blank"><i class="fa-solid fa-house"></i> Início</a></li>
+                <li><a href="catalogo_produto.html" target="_blank"><i class="fa-solid fa-book-open"></i>
+                        Catálogo</a></li>
+                <li><a href="area_das_criancas.html" target="_blank"><i class="fa-solid fa-gamepad"></i> Comunidade
+                        Kids</a></li>
+                <li><a href="sobre_nos.html" target="_blank"><i class="fa-solid fa-store"></i> Loja</a></li>
+            </ul>
+            <ul class="nav-link">
+                <li><a href="cadastro.html" aria-label="Cadastro" target="_blank"><i
+                            class="fa-regular fa-user"></i></a></li>
+                <li><a href="sistema_de_carrinho.html" aria-label="Carrinho" target="_blank"><i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <span class="eyebrow">Faça parte da diversão</span>
+            <h1>Crie sua conta!</h1>
+            <p>Cadastre-se na Toys Lovers para acompanhar novidades e deixar suas compras ainda mais práticas.</p>
+        </section>
+        <section class="section container-wide">
+            <div class="form-card">
+                <div class="form-heading"><span class="form-icon"><i class="fa-solid fa-user-plus"></i></span>
+                    <div>
+                        <h2>Seus dados</h2>
+                        <p>Preencha os campos abaixo para continuar.</p>
+                    </div>
+                </div>
+                <form id="cadastro-form">
+                    <fieldset>
+                        <legend><i class="fa-regular fa-user"></i> Dados pessoais</legend>
+                        <div class="form-grid">
+                            <div class="field full"><label for="nome">Nome completo</label><input id="nome" name="nome"
+                                    type="text" placeholder="Digite seu nome completo" autocomplete="name" required>
+                            </div>
+                            <div class="field"><label for="email">E-mail</label><input id="email" name="email"
+                                    type="email" placeholder="seuemail@exemplo.com" autocomplete="email" required></div>
+                            <div class="field"><label for="telefone">Telefone</label><input id="telefone"
+                                    name="telefone" type="tel" placeholder="(11) 99999-9999" autocomplete="tel"></div>
+                            <div class="field"><label for="senha">Senha</label><input id="senha" name="senha"
+                                    type="password" placeholder="Crie uma senha" minlength="6"
+                                    autocomplete="new-password" required></div>
+                            <div class="field"><label for="confirmar">Confirmar senha</label><input id="confirmar"
+                                    name="confirmar" type="password" placeholder="Digite a senha novamente"
+                                    minlength="6" autocomplete="new-password" required></div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend><i class="fa-solid fa-location-dot"></i> Endereço (opcional)</legend>
+                        <div class="form-grid">
+                            <div class="field"><label for="cep">CEP</label><input id="cep" name="cep"
+                                    inputmode="numeric" placeholder="00000-000" autocomplete="postal-code"></div>
+                            <div class="field"><label for="cidade">Cidade</label><input id="cidade" name="cidade"
+                                    placeholder="Sua cidade" autocomplete="address-level2"></div>
+                            <div class="field"><label for="rua">Rua e número</label><input id="rua" name="rua"
+                                    placeholder="Rua, número" autocomplete="street-address"></div>
+                            <div class="field"><label for="complemento">Complemento</label><input id="complemento"
+                                    name="complemento" placeholder="Apartamento, bloco etc."></div>
+                        </div>
+                    </fieldset>
+                    <label class="terms"><input type="checkbox" required> <span>Li e aceito os termos de uso e a
+                            política de privacidade.</span></label>
+                    <button class="btn submit-btn" type="submit">Criar minha conta <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                    <p class="form-feedback" id="cadastro-feedback" aria-live="polite"></p>
+                    <p class="login-note">Já tem uma conta? <a href="#">Faça login</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="rodape">
+        <div class="footer-container container-wide">
+            <div class="footer-logo">
+                <h2>Toys Lovers</h2>
+                <p>Brincar é muito melhor juntos! ♥</p>
+            </div>
+            <div class="footer-links">
+                <a href="#sobre_nos.html">Sobre Nós</a><a href="#rodape">Política de Privacidade</a>
+                <a href="#rodape">Termos de Uso</a><a href="#rodape">Fale Conosco</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.youtube.com/" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <div class="footer-newsletter">
+                <p>Receba novidades e ofertas especiais!</p>
+                <form class="newsletter-input" id="newsletter-form">
+                    <label class="visually-hidden" for="email-newsletter">Seu e-mail</label>
+                    <input id="email-newsletter" type="email" placeholder="Seu e-mail" required>
+                    <button type="submit" aria-label="Cadastrar e-mail">→</button>
+                </form>
+                <p class="newsletter-feedback" id="newsletter-feedback" aria-live="polite"></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JAVASCRIPIT/cadastro.js"></script>
+    <script src="../carrinho.js" data-catalogo="../catalogo_produto.json"></script>
+</body>
+
+</html>
