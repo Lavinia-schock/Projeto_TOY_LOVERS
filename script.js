@@ -92,6 +92,9 @@ fetch("catalogo_produto.json")
 
         const modal = document.getElementById("modalProduto");
         let produtoSelecionado = null;
+        
+        document.getElementById("modalAdicionarCarrinho").dataset.id =
+        produtoSelecionado.id;
 
         document.addEventListener("click", event => {
             const card = event.target.closest(".produto");
@@ -127,12 +130,7 @@ fetch("catalogo_produto.json")
         document.getElementById("fecharModal")?.addEventListener("click", () => {
             modal?.classList.remove("ativo");
         });
-
-        document.getElementById("modalAdicionarCarrinho")?.addEventListener("click", () => {
-            if (produtoSelecionado && typeof adicionarCarrinho === "function") {
-                adicionarCarrinho(produtoSelecionado);
-            }
-        });
+        
     })
     .catch(erro => {
         console.error("Erro ao carregar produtos:", erro);

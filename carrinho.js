@@ -5,7 +5,7 @@
     const scriptCarrinho = document.currentScript;
 
     const caminhoCatalogo =
-        scriptCarrinho?.dataset.catalogo || "../JSON/catalogo_produto.json";
+        scriptCarrinho?.dataset.catalogo || "JSON/catalogo_produto.json";
 
     function obterCarrinho() {
         try {
@@ -40,9 +40,7 @@
     }
 
     function caminhoImagem(imagem) {
-        if (!imagem) {
-            return "";
-        }
+        if (!imagem) return "";
 
         if (/^https?:\/\//i.test(imagem)) {
             return imagem;
@@ -52,7 +50,7 @@
             return imagem;
         }
 
-        return "../" + imagem.replace(/^\.?\//, "");
+        return "../" + imagem.replace(/^\.\//, "");
     }
 
     function obterProdutos() {
