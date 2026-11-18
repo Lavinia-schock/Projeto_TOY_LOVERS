@@ -9,47 +9,62 @@
 
     function obterCarrinho() {
         try {
-            return JSON.parse(localStorage.getItem(CHAVE_CARRINHO)) || [];
-        } catch {
+            const dados = JSON.parse(
+                localStorage.getItem(CHAVE_CARRINHO)
+            );
+
+            return Array.isArray(dados) ? dados : [];
+
+        } catch (erro) {
+            console.error("Erro ao recuperar o carrinho:", erro);
             return [];
         }
     }
 
     function salvarCarrinho(carrinho) {
-        localStorage.setItem(CHAVE_CARRINHO, JSON.stringify(carrinho));
+        localStorage.setItem(
+            CHAVE_CARRINHO,
+            JSON.stringify(carrinho)
+        );
 
         atualizarContadorCarrinho();
 
         window.dispatchEvent(new Event("carrinhoAtualizado"));
     }
 
-    function atualizarContadorCarrinho() {
-        const carrinho = obterCarrinho();
-
-        const quantidade = carrinho.reduce(
-            (total, produto) => total + Number(produto.quantidade || 0),
-            0
-        );
-
-        const linkCarrinho = document.querySelector(
-            'a[href*="sistema_de_carrinho.html"]'
-        );
-
-        if (!linkCarrinho) return;
-
-        let contador = document.getElementById("contadorCarrinho");
-
-        if (!contador) {
-            contador = document.createElement("span");
-            contador.id = "contadorCarrinho";
-            linkCarrinho.appendChild(contador);
-        }
-
-        contador.textContent = quantidade;
-        contador.hidden = quantidade === 0;
+    function formatarPreco(valor) {
+        return Number(valor || 0).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
     }
 
-    async function adicionarCarrinho(id) {
+    function caminhoImagem(imagem) {
+        if (!imagem) {
+            return "";
+        }
+
+        if (/^https?:\/\//i.test(imagem)) {
+            return imagem;
+        }
+
+        if (imagem.startsWith("../")) {
+            return imagem;
+        }
+
+        return "../" + imagem.replace(/^\.?\//, "");
+    }
+
+    function obterProdutos() {
+        return obterCarrinho().map(produto => ({
+            ...produto,
+            quantidade: Number(produto.quantidade) || 1,
+            preco: Number(produto.preco) || 0,
+            imagemCompleta: caminhoImagem(produto.imagem)
+        }));
+    }
+
+    async function adicionar(id) {
         try {
             const resposta = await fetch(caminhoCatalogo);
 
@@ -75,7 +90,9 @@
             );
 
             if (existente) {
-                existente.quantidade++;
+                existente.quantidade =
+                    Number(existente.quantidade || 0) + 1;
+
             } else {
                 carrinho.push({
                     id: Number(produto.id),
@@ -97,8 +114,77 @@
         }
     }
 
+    function alterarQuantidade(id, alteracao) {
+        const carrinho = obterCarrinho();
+
+        const produto = carrinho.find(
+            item => Number(item.id) === Number(id)
+        );
+
+        if (!produto) return;
+
+        produto.quantidade =
+            Number(produto.quantidade) + alteracao;
+
+        if (produto.quantidade <= 0) {
+            remover(id);
+            return;
+        }
+
+        salvarCarrinho(carrinho);
+    }
+
+    function remover(id) {
+        const carrinho = obterCarrinho().filter(
+            produto => Number(produto.id) !== Number(id)
+        );
+
+        salvarCarrinho(carrinho);
+    }
+
+    function limpar() {
+        salvarCarrinho([]);
+    }
+
+    function calcularTotal() {
+        return obterCarrinho().reduce((total, produto) => {
+            return total +
+                Number(produto.preco) *
+                Number(produto.quantidade || 0);
+        }, 0);
+    }
+
+    function atualizarContadorCarrinho() {
+        const carrinho = obterCarrinho();
+
+        const quantidade = carrinho.reduce(
+            (total, produto) =>
+                total + Number(produto.quantidade || 0),
+            0
+        );
+
+        const linkCarrinho = document.querySelector(
+            'a[href*="sistema_de_carrinho.html"]'
+        );
+
+        if (!linkCarrinho) return;
+
+        let contador = document.getElementById("contadorCarrinho");
+
+        if (!contador) {
+            contador = document.createElement("span");
+            contador.id = "contadorCarrinho";
+            linkCarrinho.appendChild(contador);
+        }
+
+        contador.textContent = quantidade;
+        contador.hidden = quantidade === 0;
+    }
+
     document.addEventListener("click", function (event) {
-        const botao = event.target.closest(".add-cart, #modalAdicionarCarrinho");
+        const botao = event.target.closest(
+            ".add-cart, #modalAdicionarCarrinho"
+        );
 
         if (!botao) return;
 
@@ -111,13 +197,23 @@
             return;
         }
 
-        adicionarCarrinho(id);
+        adicionar(id);
     });
 
     window.addEventListener("storage", atualizarContadorCarrinho);
     window.addEventListener("carrinhoAtualizado", atualizarContadorCarrinho);
 
-    document.addEventListener("DOMContentLoaded", atualizarContadorCarrinho);
+    window.ToysLoversCarrinho = {
+        pronto: Promise.resolve(),
+        obterProdutos,
+        adicionar,
+        alterarQuantidade,
+        remover,
+        limpar,
+        calcularTotal,
+        formatarPreco
+    };
 
     atualizarContadorCarrinho();
+
 })();

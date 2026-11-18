@@ -364,7 +364,7 @@ function filtrarProdutos() {
 
 async function carregarProdutos() {
     try {
-        const resposta = await fetch("../catalogo_produto.json");
+        const resposta = await fetch("../JSON/catalogo_produto.json");
 
         if (!resposta.ok) {
             throw new Error("Não foi possível carregar o catálogo.");
