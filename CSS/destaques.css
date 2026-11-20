@@ -110,6 +110,26 @@ select {
     color: var(--red-dark)
 }
 
+/* Link Minha Conta */
+.nav-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--red);
+    font-weight: 800;
+    font-size: 13px;
+    transition: .2s;
+}
+
+.nav-link a:hover {
+    color: var(--red-dark);
+    transform: translateY(-2px);
+}
+
+.nav-link a i {
+    font-size: 19px;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
