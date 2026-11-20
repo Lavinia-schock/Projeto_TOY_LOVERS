@@ -1,23 +1,24 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Área das Crianças | Toys Lovers</title>
+    <title>Comunidade Kids | Toys Lovers</title>
 
     <link rel="stylesheet" href="../CSS/area_das_criancas.css">
-    <link rel="icon" href="IMG/MC-LOVERS-LOGO-ICONE.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Yeseva+One&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- CAPA DE ABERTURA -->
+    <!-- 1. TELA DE ABERTURA -->
 
     <section id="capa-abertura" class="capa">
 
@@ -27,9 +28,7 @@
                 ★ BEM-VINDOS ★
             </div>
 
-            <h1>
-                Comunidade <span>Kids</span>
-            </h1>
+            <h1>Comunidade <span>Kids</span></h1>
 
             <p>Um mundo de diversão e descobertas!</p>
 
@@ -42,29 +41,99 @@
     </section>
 
 
+    <!-- CONTEÚDO DA COMUNIDADE -->
 
-    <!-- CONTEÚDO PRINCIPAL -->
-
-    <main id="conteudo-principal" class="conteudo-principal principal">
+    <main id="conteudo-principal" class="conteudo-principal">
 
         <!-- CABEÇALHO -->
 
         <header class="cabecalho-comunidade">
 
-            <h1>Comunidade Kids</h1>
+            <div>
+                <h1>Comunidade Kids</h1>
+                <p>Explore, jogue e divirta-se!</p>
+            </div>
 
-            <p>Explore, jogue e divirta-se!</p>
+            <div class="acoes-usuario">
+                <span id="nome-conta"></span>
+                <button id="botao-sair" type="button">Sair</button>
+            </div>
 
         </header>
 
 
-        <!-- ÁREA DOS JOGOS -->
+        <!-- 2. ESCOLHA DE NICKNAME E AVATAR -->
 
-        <section id="area-jogos" class="area-jogos">
+        <section id="tela-perfil-kids" class="tela-perfil-kids">
 
-            <h2>Escolha seu jogo!</h2>
+            <div class="perfil-conteudo">
 
-            <section id="area-jogos" class="area-jogos">
+                <span class="subtitulo-kids">SEU ESPAÇO NA COMUNIDADE</span>
+
+                <h2>Como vamos chamar você?</h2>
+
+                <p>
+                    Escolha um nickname e um avatar para representar
+                    você nos jogos e no pódio!
+                </p>
+
+                <label for="nickname">Seu nickname</label>
+
+                <input
+                    type="text"
+                    id="nickname"
+                    maxlength="16"
+                    placeholder="Exemplo: Estrela123"
+                    autocomplete="off"
+                >
+
+                <h3>Escolha seu avatar</h3>
+
+                <div id="selecao-avatares" class="selecao-avatares">
+
+                    <button type="button" class="avatar-opcao selecionado" data-avatar="🦊">🦊</button>
+                    <button type="button" class="avatar-opcao" data-avatar="🐼">🐼</button>
+                    <button type="button" class="avatar-opcao" data-avatar="🐸">🐸</button>
+                    <button type="button" class="avatar-opcao" data-avatar="🐱">🐱</button>
+                    <button type="button" class="avatar-opcao" data-avatar="🐯">🐯</button>
+                    <button type="button" class="avatar-opcao" data-avatar="🐻">🐻</button>
+                    <button type="button" class="avatar-opcao" data-avatar="🐰">🐰</button>
+                    <button type="button" class="avatar-opcao" data-avatar="🐵">🐵</button>
+
+                </div>
+
+                <p id="mensagem-perfil" class="mensagem-perfil"></p>
+
+                <button id="botao-continuar" type="button">
+                    Continuar para os jogos
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 3. PÁGINA DOS JOGOS -->
+
+        <section id="pagina-jogos" class="pagina-jogos escondido">
+
+            <div class="boas-vindas-jogador">
+
+                <div id="avatar-jogador">🦊</div>
+
+                <div>
+                    <h2>Olá, <span id="nickname-jogador"></span>!</h2>
+                    <p>Escolha uma aventura para começar.</p>
+                </div>
+
+                <button id="botao-editar-perfil" type="button">
+                    Editar perfil
+                </button>
+
+            </div>
+
+
+            <section class="area-jogos">
 
                 <div class="decoracao-circulos">
                     <span class="circulo circulo-1"></span>
@@ -79,84 +148,71 @@
 
                 <div class="container-jogos">
 
-                    <!-- Seus três cards permanecem aqui -->
+                    <article class="card-jogo">
+
+                        <img src="../imagens/capa_jogo1.png" alt="Capa do primeiro jogo">
+
+                        <h3>Jogo 1</h3>
+
+                        <p>Prepare-se para uma nova aventura!</p>
+
+                        <a href="jogos/jogo1.html">Jogar agora</a>
+
+                    </article>
+
+
+                    <article class="card-jogo">
+
+                        <img src="../imagens/capa_jogo2.png" alt="Capa do segundo jogo">
+
+                        <h3>Jogo 2</h3>
+
+                        <p>Teste suas habilidades e divirta-se!</p>
+
+                        <a href="jogos/jogo2.html">Jogar agora</a>
+
+                    </article>
+
+
+                    <article class="card-jogo">
+
+                        <img src="../imagens/capa_jogo3.png" alt="Capa do terceiro jogo">
+
+                        <h3>Jogo 3</h3>
+
+                        <p>Descubra novos desafios!</p>
+
+                        <a href="jogos/jogo3.html">Jogar agora</a>
+
+                    </article>
 
                 </div>
 
             </section>
 
-            <div class="container-jogos">
 
-                <!-- JOGO 1 -->
+            <!-- 4. RANKING COMPARTILHADO -->
 
-                <article class="card-jogo">
+            <section id="ranking" class="ranking">
 
-                    <img src="imagens/capa_jogo1.png" alt="Capa do primeiro jogo">
+                <h2>🏆 Pódio da Comunidade</h2>
 
-                    <h3>Jogo 1</h3>
+                <p>Veja quem está conquistando mais pontos!</p>
 
-                    <p>Prepare-se para uma nova aventura!</p>
+                <div id="lista-ranking" class="lista-ranking">
 
-                    <a href="jogos/jogo1.html">Jogar agora</a>
+                    <p>Carregando ranking...</p>
 
-                </article>
+                </div>
 
-
-                <!-- JOGO 2 -->
-
-                <article class="card-jogo">
-
-                    <img src="imagens/capa_jogo2.png" alt="Capa do segundo jogo">
-
-                    <h3>Jogo 2</h3>
-
-                    <p>Teste suas habilidades e divirta-se!</p>
-
-                    <a href="jogos/jogo2.html">Jogar agora</a>
-
-                </article>
-
-
-                <!-- JOGO 3 -->
-
-                <article class="card-jogo">
-
-                    <img src="imagens/capa_jogo3.png" alt="Capa do terceiro jogo">
-
-                    <h3>Jogo 3</h3>
-
-                    <p>Descubra novos desafios!</p>
-
-                    <a href="jogos/jogo3.html">Jogar agora</a>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- RANKING DOS JOGADORES -->
-
-        <section id="ranking" class="ranking">
-
-            <h2>🏆 Melhores Jogadores</h2>
-
-            <p>Confira quem está se destacando na Comunidade Kids!</p>
-
-            <div id="lista-ranking" class="lista-ranking">
-
-                <!-- O JavaScript irá inserir os jogadores aqui -->
-
-            </div>
+            </section>
 
         </section>
 
     </main>
 
 
-    <script src="../JAVASCRIPIT/area_das_criancas.js"></script>
+    <script type="module" src="../JAVASCRIPIT/area_das_criancas.js"></script>
 
 </body>
-
 </html>

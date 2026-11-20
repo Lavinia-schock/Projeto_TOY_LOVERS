@@ -1051,3 +1051,45 @@ input {
     }
 }
 
+
+.usuario-logado {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+}
+
+.nome-usuario {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.nome-usuario:hover {
+    color: var(--red-dark);
+}
+
+#botao-sair {
+    padding: 7px 13px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--red);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#botao-sair:hover {
+    background-color: var(--red-dark);
+}
+
+#botao-sair:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+

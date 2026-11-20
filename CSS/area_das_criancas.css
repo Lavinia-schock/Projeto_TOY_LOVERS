@@ -1,4 +1,8 @@
 
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,690 +10,876 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333333;
-}
-
-
-
-/* CONFIGURAÇÕES GERAIS */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #ffffff;
-    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fffafa;
+    color: #333;
     overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-.logo,
-.sidebar-header {
-  font-family: 'Poller One', cursive;
+button,
+input {
+    font: inherit;
 }
 
-/* CAPA DE ABERTURA */
+button {
+    cursor: pointer;
+}
 
-.capa {
+.escondido {
+    display: none !important;
+}
+
+/* =========================================
+   2. CONTEÚDO PRINCIPAL
+========================================= */
+
+.conteudo-principal {
+    width: 100%;
+    min-height: 100vh;
+    padding: 25px 6%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.conteudo-principal.visivel {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================================
+   3. CAPA DE ABERTURA
+========================================= */
+
+#capa-abertura {
+    display: none;
     position: fixed;
     inset: 0;
-    background-color: #d02929;
-    border: 10px solid #a91b27;
-    display: flex;
+    z-index: 9999;
+
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+
+    background: #e52332;
+    color: white;
+
+    text-align: center;
 
     transition:
-        transform 0.8s cubic-bezier(0.77, 0, 0.175, 1),
-        opacity 0.8s ease;
-}
-
-.capa.sair {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
+        opacity 0.8s ease,
+        transform 0.8s ease;
 }
 
 .capa-conteudo {
-    text-align: center;
-    padding: 20px;
-    animation: pularEntrada 0.8s ease forwards;
+    width: 90%;
+    max-width: 650px;
+    animation: surgir-capa 1s ease;
 }
 
-
-/* SELO DE BOAS-VINDAS */
-
-.badge-kids {
-    display: inline-block;
-    background-color: #ffffff;
-    color: #d02929;
-    font-weight: bold;
-    font-size: 0.9rem;
-    padding: 8px 20px;
-    border-radius: 999px;
-    margin-bottom: 18px;
-    letter-spacing: 1px;
-}
-
-
-/* TÍTULO DA CAPA */
-
-.capa-conteudo h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    color: #ffffff;
-    font-weight: 900;
-}
-
-.capa-conteudo h1 span {
-    color: #FFD700;
-}
-
-.capa-conteudo p {
-    color: #ffffff;
-    font-size: 1.1rem;
-    margin-top: 15px;
-}
-
-
-/* BARRA DE PROGRESSO */
-
-.barra-progresso {
-    width: 240px;
-    height: 8px;
-    background-color: #D9A0A0;
-    border-radius: 999px;
-    margin: 28px auto 0;
-    overflow: hidden;
-}
-
-.progresso-preenchimento {
-    height: 100%;
-    width: 0%;
-    background-color: #ffffff;
-    border-radius: 999px;
-
-    animation: carregarBarra 2.2s ease forwards;
-}
-
-
-/* ANIMAÇÕES DA CAPA */
-
-@keyframes pularEntrada {
-
-    0% {
+@keyframes surgir-capa {
+    from {
         opacity: 0;
         transform: scale(0.8);
     }
 
-    70% {
-        transform: scale(1.05);
-    }
-
-    100% {
+    to {
         opacity: 1;
         transform: scale(1);
     }
-
 }
 
-@keyframes carregarBarra {
+.badge-kids {
+    display: inline-block;
+    padding: 10px 25px;
+    margin-bottom: 25px;
 
-    to {
-        width: 100%;
-    }
+    background: #ffe16b;
+    color: #c91e2d;
 
+    border-radius: 30px;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-
-/* CONTEÚDO PRINCIPAL */
-
-.conteudo-principal {
-    width: 100%;
-    min-height: 100vh;
-    padding: 40px 6%;
+.capa-conteudo h1 {
+    font-family: "Poller One", cursive;
+    font-size: clamp(35px, 7vw, 65px);
+    margin-bottom: 18px;
 }
 
-.principal {
+.capa-conteudo h1 span {
+    color: #ffe16b;
+}
+
+.capa-conteudo p {
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+/* Barra de progresso */
+
+.barra-progresso {
+    width: 80%;
+    max-width: 350px;
+    height: 12px;
+
+    margin: auto;
+
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.progresso-preenchimento {
+    width: 0;
+    height: 100%;
+
+    background: #ffe16b;
+    border-radius: 30px;
+}
+
+.progresso-preenchimento.carregando {
+    animation: carregar-barra 2.5s linear forwards;
+}
+
+@keyframes carregar-barra {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+#capa-abertura.saindo {
     opacity: 0;
-    transform: translateY(20px);
-
-    transition:
-        opacity 0.8s ease 0.3s,
-        transform 0.8s ease 0.3s;
+    transform: translateY(-100%);
+    pointer-events: none;
 }
 
-.principal.visivel {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* CABEÇALHO */
+/* =========================================
+   4. CABEÇALHO
+========================================= */
 
 .cabecalho-comunidade {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 22px 30px;
     margin-bottom: 45px;
+
+    background: white;
+    border: 1px solid #f2dddd;
+    border-bottom: 5px solid #e52332;
+
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 .cabecalho-comunidade h1 {
-    color: #d02929;
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-family: "Poller One", cursive;
+    color: #e52332;
+    font-size: 25px;
+    margin-bottom: 7px;
 }
 
 .cabecalho-comunidade p {
-    color: #666666;
-    font-size: 17px;
+    color: #777;
+    font-size: 14px;
 }
 
+.acoes-usuario {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
+#nome-conta {
+    color: #555;
+    font-weight: bold;
+}
 
-/* ÁREA DOS JOGOS */
+#botao-sair {
+    padding: 10px 22px;
+
+    background: #e52332;
+    color: white;
+
+    border: none;
+    border-radius: 25px;
+
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#botao-sair:hover {
+    background: #bd1725;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   5. TELA DE NICKNAME E AVATAR
+========================================= */
+
+#tela-perfil-kids {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    padding: 20px 0 60px;
+
+    opacity: 0;
+    transform: translateY(35px);
+}
+
+#tela-perfil-kids.ativa {
+    display: flex;
+    animation: entrar-perfil 0.8s ease forwards;
+}
+
+#tela-perfil-kids.saindo {
+    animation: sair-perfil 0.7s ease forwards;
+}
+
+@keyframes entrar-perfil {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sair-perfil {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-35px);
+    }
+}
+
+.perfil-conteudo {
+    width: 100%;
+    max-width: 650px;
+
+    padding: 45px;
+
+    background: white;
+    border: 1px solid #f1dada;
+    border-radius: 25px;
+
+    text-align: center;
+
+    box-shadow: 0 12px 35px rgba(160, 20, 35, 0.09);
+}
+
+.subtitulo-kids {
+    display: inline-block;
+
+    color: #e52332;
+    background: #fff0f1;
+
+    padding: 9px 18px;
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.perfil-conteudo h2 {
+    margin: 22px 0 12px;
+
+    color: #e52332;
+    font-family: "Yeseva One", cursive;
+    font-size: clamp(24px, 4vw, 34px);
+}
+
+.perfil-conteudo > p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.perfil-conteudo label {
+    display: block;
+    text-align: left;
+
+    margin-bottom: 10px;
+
+    font-weight: bold;
+    color: #444;
+}
+
+#nickname {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 17px;
+
+    border: 2px solid #f0d4d6;
+    border-radius: 12px;
+
+    outline: none;
+    transition: 0.3s;
+}
+
+#nickname:focus {
+    border-color: #e52332;
+    box-shadow: 0 0 0 4px rgba(229, 35, 50, 0.08);
+}
+
+.perfil-conteudo h3 {
+    margin: 30px 0 18px;
+    color: #444;
+}
+
+/* =========================================
+   6. SELEÇÃO DE AVATARES
+========================================= */
+
+.selecao-avatares {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.avatar-opcao {
+    width: 65px;
+    height: 65px;
+
+    background: #fff4f4;
+    border: 2px solid #f4dddd;
+    border-radius: 18px;
+
+    font-size: 32px;
+
+    transition: 0.25s;
+}
+
+.avatar-opcao:hover {
+    transform: translateY(-5px) scale(1.05);
+    border-color: #e52332;
+}
+
+.avatar-opcao.selecionado {
+    background: #ffe7e9;
+    border: 3px solid #e52332;
+    box-shadow: 0 5px 15px rgba(229, 35, 50, 0.15);
+    transform: scale(1.08);
+}
+
+.mensagem-perfil {
+    min-height: 22px;
+    margin: 20px 0 10px;
+
+    color: #d51d2d;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#botao-continuar {
+    width: 100%;
+    min-height: 52px;
+
+    margin-top: 8px;
+
+    background: #e52332;
+    color: white;
+
+    border: none;
+    border-radius: 13px;
+
+    font-weight: bold;
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+#botao-continuar:hover {
+    background: #bf1827;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(229, 35, 50, 0.2);
+}
+
+#botao-continuar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   7. ÁREA DOS JOGOS
+========================================= */
+
+#pagina-jogos {
+    display: none;
+    width: 100%;
+
+    opacity: 0;
+    transform: translateY(35px);
+}
+
+#pagina-jogos.ativa {
+    display: block;
+    animation: entrar-jogos 0.8s ease forwards;
+}
+
+@keyframes entrar-jogos {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   8. BOAS-VINDAS DO JOGADOR
+========================================= */
+
+.boas-vindas-jogador {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 25px 30px;
+    margin-bottom: 40px;
+
+    background: #fff0f1;
+    border-left: 6px solid #e52332;
+    border-radius: 18px;
+}
+
+#avatar-jogador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 75px;
+    height: 75px;
+    flex-shrink: 0;
+
+    background: white;
+    border: 3px solid #e52332;
+    border-radius: 50%;
+
+    font-size: 42px;
+}
+
+.boas-vindas-jogador h2 {
+    color: #e52332;
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+
+.boas-vindas-jogador p {
+    color: #777;
+}
+
+#botao-editar-perfil {
+    margin-left: auto;
+
+    padding: 11px 18px;
+
+    background: white;
+    color: #e52332;
+
+    border: 2px solid #e52332;
+    border-radius: 25px;
+
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#botao-editar-perfil:hover {
+    background: #e52332;
+    color: white;
+}
+
+/* =========================================
+   9. SEÇÃO DE JOGOS
+========================================= */
 
 .area-jogos {
     position: relative;
-    overflow: hidden;
     isolation: isolate;
+    overflow: hidden;
+
+    padding: 45px 30px;
+    margin-bottom: 55px;
+
+    background: #fff;
+    border: 1px solid #f3dddd;
+    border-radius: 25px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
 }
 
-/* CAMADA DOS CÍRCULOS */
+.area-jogos > h2 {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 35px;
+
+    text-align: center;
+    color: #e52332;
+
+    font-family: "Yeseva One", cursive;
+    font-size: clamp(25px, 4vw, 35px);
+}
+
+.container-jogos {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* =========================================
+   10. CARTÕES DOS JOGOS
+========================================= */
+
+.card-jogo {
+    padding: 18px;
+
+    background: white;
+    border: 1px solid #f0dada;
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-jogo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(229, 35, 50, 0.13);
+}
+
+.card-jogo img {
+    display: block;
+
+    width: 100%;
+    height: 190px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+    background: #fff0f1;
+}
+
+.card-jogo h3 {
+    margin: 20px 0 10px;
+
+    color: #e52332;
+    font-size: 21px;
+}
+
+.card-jogo p {
+    min-height: 42px;
+
+    margin-bottom: 20px;
+
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.card-jogo a {
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    background: #e52332;
+    color: white;
+
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.card-jogo a:hover {
+    background: #bd1725;
+    transform: scale(1.04);
+}
+
+/* =========================================
+   11. CÍRCULOS DECORATIVOS ANIMADOS
+========================================= */
 
 .decoracao-circulos {
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 1;
+
+    overflow: hidden;
     pointer-events: none;
 }
-
-/* ESTILO GERAL DOS CÍRCULOS */
 
 .circulo {
     position: absolute;
     display: block;
-    border-radius: 50%;
-    background-color: #8B0000;
-    opacity: 0.12;
-}
 
-/* CÍRCULOS INDIVIDUAIS */
+    border: 3px solid rgba(229, 35, 50, 0.12);
+    border-radius: 50%;
+
+    animation: flutuar-circulo 7s ease-in-out infinite;
+}
 
 .circulo-1 {
-    width: 100px;
-    height: 100px;
-    top: 5%;
-    left: 3%;
-}
-
-.circulo-2 {
-    width: 55px;
-    height: 55px;
-    top: 35%;
-    left: 15%;
-    background-color: #B22222;
-}
-
-.circulo-3 {
-    width: 140px;
-    height: 140px;
-    top: 15%;
-    right: 5%;
-}
-
-.circulo-4 {
-    width: 70px;
-    height: 70px;
-    bottom: 10%;
-    right: 18%;
-    background-color: #DC143C;
-}
-
-.circulo-5 {
-    width: 45px;
-    height: 45px;
-    bottom: 20%;
+    width: 90px;
+    height: 90px;
+    top: 8%;
     left: 5%;
 }
 
-.circulo-6 {
-    width: 90px;
-    height: 90px;
-    top: 55%;
-    right: 3%;
-    background-color: #B22222;
-}
-
-/* CONTEÚDO NA FRENTE DOS CÍRCULOS */
-
-.area-jogos h2,
-.container-jogos {
-    position: relative;
-    z-index: 1;
-}
-
-
-.area-jogos h2 {
-    color: #d02929;
-    font-size: 28px;
-    margin-bottom: 25px;
-}
-
-.container-jogos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
-
-.card-jogo {
-    background-color: rgb(220, 0, 0);
-    border: 2px solid #d02929;
-    border-radius: 15px;
-    padding: 18px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease;
-}
-
-.card-jogo:hover {
-    transform: translateY(-7px);
-}
-
-.card-jogo img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.card-jogo h3 {
-    color: #d02929;
-    font-size: 22px;
-    margin: 15px 0 10px;
-}
-
-.card-jogo p {
-    color: #666666;
-    margin-bottom: 20px;
-}
-
-.card-jogo a {
-    display: inline-block;
-    background-color: #d02929;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.card-jogo a:hover {
-    background-color: #a91b27;
-}
-
-
-/* RANKING */
-
-.ranking {
-    margin-top: 65px;
-    text-align: center;
-}
-
-.ranking h2 {
-    color: #d02929;
-    font-size: 30px;
-    margin-bottom: 15px;
-}
-
-.ranking > p {
-    color: #666666;
-    margin-bottom: 25px;
-}
-
-.lista-ranking {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.card-jogador {
-    background-color: #ffffff;
-    border: 1px solid #d02929;
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
-}
-
-.card-jogador span {
-    color: #d02929;
-    font-weight: bold;
-}
-
-.card-jogador h3 {
-    color: #333333;
-}
-
-.card-jogador p {
-    color: #d02929;
-    font-weight: bold;
-    margin: 0;
-}
-
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 768px) {
-
-    .container-jogos {
-        grid-template-columns: 1fr;
-    }
-
-    .cabecalho-comunidade h1 {
-        font-size: 28px;
-    }
-
-}
-
-@media (max-width: 600px) {
-
-    .card-jogador {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .capa-conteudo p {
-        font-size: 0.95rem;
-    }
-
-}
-
-/* CONTEÚDO PRINCIPAL */
-
-.conteudo-principal {
-    width: 100%;
-    min-height: 100vh;
-    padding: 40px 6%;
-}
-
-
-/* CABEÇALHO */
-
-.cabecalho-comunidade {
-    text-align: center;
-    margin-bottom: 45px;
-}
-
-.cabecalho-comunidade h1 {
-    color: #d02929;
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.cabecalho-comunidade p {
-    color: #666666;
-    font-size: 17px;
-}
-
-
-/* ÁREA DOS JOGOS */
-
-.area-jogos h2 {
-    color: #d02929;
-    font-size: 28px;
-    margin-bottom: 25px;
-}
-
-.container-jogos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
-
-.card-jogo {
-    background-color: #ffffff;
-    border: 2px solid #d02929;
-    border-radius: 15px;
-    padding: 18px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease;
-}
-
-.card-jogo:hover {
-    transform: translateY(-7px);
-}
-
-.card-jogo img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.card-jogo h3 {
-    color: #d02929;
-    font-size: 22px;
-    margin: 15px 0 10px;
-}
-
-.card-jogo p {
-    color: #666666;
-    margin-bottom: 20px;
-}
-
-.card-jogo a {
-    display: inline-block;
-    background-color: #d02929;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.card-jogo a:hover {
-    background-color: #a91b27;
-}
-
-
-/* RANKING */
-
-.ranking {
-    margin-top: 65px;
-    text-align: center;
-}
-
-.ranking h2 {
-    color: #d02929;
-    font-size: 30px;
-    margin-bottom: 15px;
-}
-
-.ranking p {
-    color: #666666;
-    margin-bottom: 25px;
-}
-
-.lista-ranking {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-
-.card-jogador {
-    background-color: #ffffff;
-    border: 1px solid #d02929;
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
-}
-
-.card-jogador span {
-    color: #d02929;
-    font-weight: bold;
-}
-
-.card-jogador h3 {
-    color: #333333;
-}
-
-.card-jogador p {
-    color: #d02929;
-    font-weight: bold;
-    margin: 0;
-}
-
-
-/* ÁREA DOS JOGOS */
-
-.area-jogos {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-}
-
-.decoracao-circulos {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.circulo {
-    position: absolute;
-    display: block;
-    border-radius: 50%;
-    background-color: #8B0000;
-    opacity: 0.13;
-
-    animation: flutuar 5s ease-in-out infinite;
-}
-
-/* POSICIONAMENTO DOS CÍRCULOS */
-
-.circulo-1 {
-    width: 100px;
-    height: 100px;
-    top: 5%;
-    left: 3%;
-    animation-delay: 0s;
-}
-
 .circulo-2 {
-    width: 55px;
-    height: 55px;
-    top: 35%;
-    left: 15%;
-    background-color: #B22222;
+    width: 45px;
+    height: 45px;
+    top: 25%;
+    right: 8%;
     animation-delay: 1s;
 }
 
 .circulo-3 {
-    width: 140px;
-    height: 140px;
-    top: 15%;
-    right: 5%;
+    width: 65px;
+    height: 65px;
+    bottom: 8%;
+    left: 15%;
     animation-delay: 2s;
 }
 
 .circulo-4 {
-    width: 70px;
-    height: 70px;
-    bottom: 10%;
-    right: 18%;
-    background-color: #DC143C;
-    animation-delay: 0.5s;
-}
-
-.circulo-5 {
-    width: 45px;
-    height: 45px;
-    bottom: 20%;
-    left: 5%;
+    width: 110px;
+    height: 110px;
+    bottom: 5%;
+    right: 10%;
     animation-delay: 1.5s;
 }
 
-.circulo-6 {
-    width: 90px;
-    height: 90px;
+.circulo-5 {
+    width: 35px;
+    height: 35px;
     top: 55%;
-    right: 3%;
-    background-color: #B22222;
+    left: 48%;
+    animation-delay: 3s;
+}
+
+.circulo-6 {
+    width: 55px;
+    height: 55px;
+    top: 5%;
+    right: 35%;
     animation-delay: 2.5s;
 }
 
-
-/* ANIMAÇÃO DE FLUTUAÇÃO */
-
-@keyframes flutuar {
-
-    0% {
-        transform: translateY(0) scale(1);
+@keyframes flutuar-circulo {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
     }
 
     50% {
-        transform: translateY(-25px) scale(1.08);
+        transform: translateY(-22px) rotate(35deg);
     }
+}
 
-    100% {
-        transform: translateY(0) scale(1);
+/* =========================================
+   12. PÓDIO DA COMUNIDADE
+========================================= */
+
+.ranking {
+    padding: 40px 30px;
+    margin-bottom: 40px;
+
+    background: white;
+    border: 1px solid #f0dada;
+    border-radius: 25px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+.ranking > h2 {
+    color: #e52332;
+    text-align: center;
+
+    font-family: "Yeseva One", cursive;
+    font-size: clamp(24px, 4vw, 32px);
+
+    margin-bottom: 12px;
+}
+
+.ranking > p {
+    color: #777;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.lista-ranking {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.card-jogador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px 15px;
+
+    background: #fff5f5;
+    border: 1px solid #f2dddd;
+    border-radius: 18px;
+
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card-jogador:hover {
+    transform: translateY(-5px);
+    border-color: #e52332;
+}
+
+.card-jogador:first-child {
+    background: #fff5d9;
+    border: 2px solid #edc84f;
+}
+
+.card-jogador:nth-child(2) {
+    background: #f5f5f5;
+}
+
+.card-jogador:nth-child(3) {
+    background: #fff0e7;
+}
+
+.card-jogador > span {
+    color: #e52332;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.avatar-ranking {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 65px;
+
+    margin: 15px 0;
+
+    background: white;
+    border: 2px solid #f0dada;
+    border-radius: 50%;
+
+    font-size: 35px;
+}
+
+.card-jogador h3 {
+    color: #333;
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+}
+
+.card-jogador p {
+    color: #e52332;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* =========================================
+   13. RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .container-jogos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
 }
-
-
-/* CONTEÚDO NA FRENTE DOS CÍRCULOS */
-
-.area-jogos h2,
-.container-jogos {
-    position: relative;
-    z-index: 1;
-}
-
 
 @media (max-width: 600px) {
 
-    .card-jogador {
+    .conteudo-principal {
+        padding: 15px 4%;
+    }
+
+    .cabecalho-comunidade {
         flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .acoes-usuario {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .cabecalho-comunidade h1 {
+        font-size: 21px;
+    }
+
+    .perfil-conteudo {
+        padding: 28px 20px;
+    }
+
+    .selecao-avatares {
         gap: 10px;
     }
 
-}
-
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 768px) {
+    .avatar-opcao {
+        width: 55px;
+        height: 55px;
+        font-size: 27px;
+    }
 
     .container-jogos {
         grid-template-columns: 1fr;
     }
 
-    .conteudo-capa h1 {
-        font-size: 35px;
+    .area-jogos {
+        padding: 30px 18px;
     }
 
-    .conteudo-capa p {
-        font-size: 16px;
+    .card-jogo img {
+        height: 210px;
     }
 
-    .cabecalho-comunidade h1 {
-        font-size: 28px;
+    .boas-vindas-jogador {
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    #botao-editar-perfil {
+        margin-left: 0;
+    }
+
+    .ranking {
+        padding: 30px 18px;
+    }
+
+    .lista-ranking {
+        grid-template-columns: 1fr;
     }
 
 }

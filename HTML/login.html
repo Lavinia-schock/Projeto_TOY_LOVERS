@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Toys Lovers</title>
+
+    <link rel="stylesheet" href="../CSS/login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poller+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">Toys Lovers</a>
+
+        <nav class="nav-links">
+            <a href="../index.html">
+                <i class="fa-solid fa-house"></i> Início
+            </a>
+
+            <a href="catalogo_produto.html">
+                <i class="fa-solid fa-box"></i> Catálogo
+            </a>
+
+            <a href="area_das_criancas.html">
+                <i class="fa-solid fa-gamepad"></i> Comunidade Kids
+            </a>
+
+            <a href="sobre_nos.html">
+                <i class="fa-solid fa-store"></i> Loja
+            </a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="login-banner">
+
+            <span class="banner-tag">QUE BOM TER VOCÊ AQUI!</span>
+
+            <h1>Entre na sua conta!</h1>
+
+            <p>
+                Acesse sua conta Toys Lovers e continue aproveitando nossas novidades.
+            </p>
+
+        </section>
+
+
+        <section class="login-container">
+
+            <div class="login-card">
+
+                <div class="login-heading">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <div>
+                        <h2>Bem-vindo de volta!</h2>
+
+                        <p>Informe seus dados para acessar sua conta.</p>
+                    </div>
+
+                </div>
+
+
+                <form id="login-form">
+
+                    <h3 class="form-title">
+                        <i class="fa-solid fa-lock"></i>
+                        Dados de acesso
+                    </h3>
+
+
+                    <div class="form-group">
+
+                        <label for="email">E-mail</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="seuemail@exemplo.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="senha">Senha</label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="mostrar-senha"
+                                aria-label="Mostrar senha"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="forgot-password">
+
+                        <a href="#" id="esqueci-senha">
+                            Esqueceu sua senha?
+                        </a>
+
+                    </div>
+
+
+                    <button type="submit" class="submit-btn" id="botao-login">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Entrar
+                    </button>
+
+
+                    <p id="login-feedback" class="form-feedback" aria-live="polite"></p>
+
+
+                    <div class="login-note">
+
+                        <p>
+                            Ainda não tem uma conta?
+                            <a href="cadastro.html">Cadastre-se</a>
+                        </p>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+                <h3>Toys Lovers</h3>
+                <p>Diversão e alegria para toda a família!</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Links úteis</h4>
+                <a href="../index.html">Início</a>
+                <a href="catalogo_produto.html">Catálogo</a>
+                <a href="sobre_nos.html">Sobre nós</a>
+            </div>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 Toys Lovers. Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+    <script type="module" src="../JAVASCRIPIT/login.js"></script>
+
+</body>
+
+</html>

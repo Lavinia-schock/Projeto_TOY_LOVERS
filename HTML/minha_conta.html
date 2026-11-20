@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Minha Conta | Toys Lovers</title>
+
+    <link rel="stylesheet" href="../CSS/minha_conta.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poller+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="../index.html" class="logo">Toys Lovers</a>
+
+        <nav class="nav-links">
+            <a href="../index.html"><i class="fa-solid fa-house"></i> Início</a>
+            <a href="catalogo_produto.html"><i class="fa-solid fa-box"></i> Catálogo</a>
+            <a href="area_das_criancas.html"><i class="fa-solid fa-gamepad"></i> Comunidade Kids</a>
+            <a href="sobre_nos.html"><i class="fa-solid fa-store"></i> Loja</a>
+        </nav>
+    </header>
+
+    <main class="account-container">
+
+        <section class="account-heading">
+            <span class="heading-tag">ÁREA DO CLIENTE</span>
+            <h1>Minha Conta</h1>
+            <p>Consulte suas informações cadastradas na Toys Lovers.</p>
+        </section>
+
+        <section class="account-card">
+
+            <div class="profile-heading">
+                <div class="profile-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+                    <h2 id="nome-usuario">Carregando...</h2>
+                    <p id="email-usuario"></p>
+                </div>
+            </div>
+
+            <div class="account-divider"></div>
+
+            <h3><i class="fa-solid fa-id-card"></i> Dados pessoais</h3>
+
+            <div class="profile-grid">
+
+                <div class="profile-field">
+                    <span>Nome completo</span>
+                    <p id="perfil-nome">Carregando...</p>
+                </div>
+
+                <div class="profile-field">
+                    <span>E-mail</span>
+                    <p id="perfil-email">Carregando...</p>
+                </div>
+
+                <div class="profile-field">
+                    <span>Telefone</span>
+                    <p id="perfil-telefone">Carregando...</p>
+                </div>
+
+                <div class="profile-field">
+                    <span>CEP</span>
+                    <p id="perfil-cep">Carregando...</p>
+                </div>
+
+                <div class="profile-field">
+                    <span>Cidade</span>
+                    <p id="perfil-cidade">Carregando...</p>
+                </div>
+
+                <div class="profile-field">
+                    <span>Rua</span>
+                    <p id="perfil-rua">Carregando...</p>
+                </div>
+
+                <div class="profile-field full-width">
+                    <span>Complemento</span>
+                    <p id="perfil-complemento">Carregando...</p>
+                </div>
+
+            </div>
+
+            <p id="account-feedback" aria-live="polite"></p>
+
+            <div class="account-actions">
+                <a href="../index.html" class="back-button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Voltar à loja
+                </a>
+
+                <button type="button" id="botao-sair">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sair da conta
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <h3>Toys Lovers</h3>
+        <p>Brincar é muito melhor juntos! ♥</p>
+        <p>© 2026 Toys Lovers. Todos os direitos reservados.</p>
+    </footer>
+
+    <script type="module" src="../JAVASCRIPIT/minha_conta.js"></script>
+
+</body>
+</html>
