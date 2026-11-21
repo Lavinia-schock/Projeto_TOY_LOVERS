@@ -141,7 +141,21 @@ img {
     color: var(--red-dark);
 }
 
+/* minha conta estilo */
+.usuario-logado {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
+.nome-usuario {
+    color: var(--red);
+    font-weight: 800;
+}
+
+#botao-sair {
+    cursor: pointer;
+}
 
 
 /* =========================

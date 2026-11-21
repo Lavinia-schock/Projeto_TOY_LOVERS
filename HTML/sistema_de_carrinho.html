@@ -25,12 +25,11 @@
     <!-- NAVBAR -->
     <header class="site-header">
         <nav class="topbar container-wide" aria-label="Navegacão principal">
+            <img src="IMG/panda vdermelho.jfif" alt="banda vermelho" height="100px" width="100px">
             <a class="logo" href="../index.html">Toys Lovers</a>
-            <form class="search-box" action="https://www.google.com/search" method="get" target="_blank" role="search">
+            <form class="search-box" id="formBusca" action="catalogo_produto.html" method="GET" role="search">
                 <label class="visually-hidden" for="busca">Pesquisar</label>
-                <input id="busca" type="search" name="q" placeholder="Pesquisar brinquedos..." required>
-                <!-- Substitui o domínio quando o site estiver publicado. -->
-                <!-- <input type="hidden" name="as_sitesearch" value="seusite.com.br"> -->
+                <input id="busca" type="search" placeholder="Pesquisar brinquedos">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
             </form>
             <ul class="nav-links">
@@ -40,8 +39,11 @@
                 <li><a href="sobre_nos.html"><i class="fa-solid fa-store"></i> Loja</a></li>
             </ul>
 
+            <ul class="nav-link" id="area-usuario">
+                <!-- O sessao.js preencherá esta área automaticamente -->
+            </ul>
+
             <ul class="nav-link">
-                <li><a href="cadastro.html" aria-label="Cadastro"><i class="fa-regular fa-user"></i></a></li>
                 <li><a href="sistema_de_carrinho.html" aria-label="Carrinho"><i
                             class="fa-solid fa-cart-shopping"></i></a></li>
             </ul>
@@ -295,7 +297,7 @@
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script type="module" src="../JAVASCRIPIT/sessao.js"></script>
     <!-- JavaScript da loja -->
     <script src="../carrinho.js" data-catalogo="../JSON/catalogo_produto.json"></script>
     <script src="../JAVASCRIPIT/sistema_de_carrinho.js"></script>
