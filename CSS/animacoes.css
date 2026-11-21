@@ -1,0 +1,105 @@
+
+/* =================================
+   ANIMAÇÕES GERAIS - TOYS LOVERS
+================================= */
+
+/* Entrada suave da página */
+@keyframes aparecerPagina {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicação da animação */
+body {
+    animation: aparecerPagina 0.8s ease-out;
+}
+
+/* =================================
+   ANIMAÇÃO DOS BOTÕES
+================================= */
+
+button,
+.btn,
+.botao {
+    transition: all 0.3s ease;
+}
+
+button:hover,
+.btn:hover,
+.botao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(180, 0, 0, 0.2);
+}
+
+/* =================================
+   ANIMAÇÃO DOS PRODUTOS
+================================= */
+
+.produto,
+.card-produto {
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.produto:hover,
+.card-produto:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* =================================
+   ANIMAÇÃO DOS LINKS
+================================= */
+
+nav a {
+    position: relative;
+    text-decoration: none;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #d71920;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =================================
+   ANIMAÇÃO DAS IMAGENS
+================================= */
+
+img {
+    transition: transform 0.4s ease;
+}
+
+img:hover {
+    transform: scale(1.03);
+}
+
+/* =================================
+   ACESSIBILIDADE
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

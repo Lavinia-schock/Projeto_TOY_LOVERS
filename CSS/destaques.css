@@ -56,7 +56,8 @@ select {
     color: var(--red);
     font-size: 23px;
     font-weight: 900;
-    white-space: nowrap
+    white-space: nowrap;
+    text-decoration: none;
 }
 
 .search-box {
@@ -88,6 +89,7 @@ select {
     flex-wrap: wrap;
     align-items: center;
     gap: 13px;
+    text-decoration: none;
     list-style: none;
     padding: 0;
     margin: 0
@@ -97,7 +99,8 @@ select {
 .nav-link a {
     color: var(--red);
     font-weight: 800;
-    font-size: 13px
+    font-size: 13px;
+    text-decoration: none;
 }
 
 .nav-link {
@@ -107,7 +110,8 @@ select {
 .nav-links a:hover,
 .nav-link a:hover,
 .logo:hover {
-    color: var(--red-dark)
+    color: var(--red-dark);
+    text-decoration: none;
 }
 
 /* Link Minha Conta */
